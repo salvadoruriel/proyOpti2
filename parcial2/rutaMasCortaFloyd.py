@@ -32,7 +32,7 @@ prob2Floyd = np.array([
 	
 
 def rutaFloyd(mat, nodoInicio= 0, nodoDestino=1):
-
+	np.set_printoptions(suppress=True)
 	matcopia = mat
 	#matriz auxiliar de rutas
 	mataux = np.zeros(shape = mat.shape).astype(int)

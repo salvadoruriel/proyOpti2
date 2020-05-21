@@ -1,0 +1,117 @@
+ContentScreen:
+	name: '2 Arbol de expansion minima'
+	fullscreen: True
+	#orientation: 'horizontal'
+	#cols: 2
+	#on_parent: if args[1] : app.muestra_grid(grid)
+	#focused: ti_nodos
+	on_parent:
+		#if not args[1] and self.focused: self.focused.focus = False
+		#if args[1]: ti_nodos.focus = True
+		#if self.focused: self.focused.focus = False
+		#if args[1]: ti_nodos.focus = True
+		app.muestra_grid(grid, ti_nodos)
+
+
+	#contenedor grid abajo de barra de navegacion (gridlayout(cols:1) > boxlayout)
+	GridLayout:
+		cols: 2
+		StackLayout:
+			id: matriz
+			#orientation: 'vertical'
+			orientation: 'lr-tb'
+			#cols: 1
+			BoxLayout:
+				id: boxDaNodos
+				orientation: 'horizontal'
+				size_hint_x: None
+				size_hint_y: None
+
+				Label:
+					text: 'Nodos:'
+					size_hint_y: None
+					height: '32dp'
+					size_hint_x: None
+
+				TextInput:
+					id: ti_nodos
+					size_hint_y: None
+					height: '32dp'
+					size_hint_x: None
+					width: '32dp'
+					text: '3'
+					focus: True
+
+				Button:
+					text: 'Cambiar'
+					size_hint_y: None
+					height: '32dp'
+					size_hint_x: None
+					on_press: app.muestra_grid(grid, ti_nodos)
+
+			Label:
+				text: 'Use "M" como valor 99 999 como casillas no posibles'
+				text_size: (300,None)
+				halign: 'center'
+				size_hint_y: None
+				height: '32dp'
+				size_hint_x: None
+					
+
+			CGridLayout:
+				id: grid
+				nodos: 3
+				cols: 3
+
+				TextInput:
+					text: '0'
+					multiline: False
+					size_hint_y: None
+					height: '32dp'
+					size_hint_x: None
+					width: '64dp'
+					disabled: False
+
+		GridLayout:
+			id: resultados
+			cols: 1
+
+			BoxLayout:
+				id: boxresultados
+				orientation: 'horizontal'
+				size_hint_x: None
+				size_hint_y: None
+
+				Button:
+					id: butresolver
+					text: 'resolver'
+					size_hint_y: None
+					height: '32dp'
+					size_hint_x: None
+					on_press: app.resuelve_arbolmin(grid, ti_nodos, costo, boxresultados)
+					#no importa donde inicie en este metodo
+
+				Label:
+					id: costo
+					text: 'costo: '
+					size_hint_y: None
+					height: '32dp'
+					size_hint_x: None
+
+#<CFloatLayout@FloatLayout+BackgroundColor>
+<CBoxLayout@BoxLayout+BackgroundColor>
+<CGridLayout@GridLayout+BackgroundColor>
+#<CTextInput@TextInput>
+#	on_focus:
+#		screen = self.parent.parent.parent.parent
+#		if screen.parent: screen.focused = self
+
+<BackgroundColor@Widget>
+	pos_hint: {'center_x': .5, 'center_y': .5}
+	size_hint: .9, .9
+	canvas.before:
+		Color:
+			rgba: .2, .3, .4, 1
+		Rectangle:
+			size: self.size
+			pos: self.pos

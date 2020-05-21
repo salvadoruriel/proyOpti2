@@ -25,6 +25,7 @@ Eje1Midwest += np.triu(Eje1Midwest).transpose()
 #print(Eje1Midwest)
 
 def arbolExpMin(mat, nodoInicio= 0):
+	np.set_printoptions(suppress=True)
 	#inicio en primer nodo
 	vecIncl = [nodoInicio]
 	#siempre es cuadrada aqui
@@ -46,17 +47,22 @@ def arbolExpMin(mat, nodoInicio= 0):
 	costo+=min
 
 	#min = np.argmin(mat[nodoInicio])
-	vecExcl.remove(node)
+	try:
+		vecExcl.remove(node)
+	except:
+		print('arbol ya conectado')
+		return mat
 	#anexo conexion
 	vecIncl.append(node)
 	mataux[nodoInicio][node] = 1
 
+	print(mat)
 	#repito
 	return arbolExpMinRecur(mat, mataux, costo, vecIncl, vecExcl)
 
 
 def arbolExpMinRecur(mat, mataux, costo, vecIncl, vecExcl):
-	print(mat, '\n',mataux, costo, vecIncl, vecExcl)
+	print(mataux, costo, vecIncl, vecExcl)
 	#print(costo, vecIncl, vecExcl)
 	#return costo, vecIncl
 
@@ -88,7 +94,9 @@ def arbolExpMinRecur(mat, mataux, costo, vecIncl, vecExcl):
 
 #########################################################
 #PRUEBAS TEST
-imprimeGraf(Eje1Midwest)
+'''
+#imprimeGraf(Eje1Midwest)
 costo, mataux = arbolExpMin(Eje1Midwest,0)
 print(costo)
 imprimeGraf(mataux)
+'''

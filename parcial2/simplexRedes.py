@@ -44,6 +44,7 @@ sinFlujoMax = np.array([
 	])
 
 def simplexRedes(mat, matFlujoMin, matFlujoMax, iter=999):
+	np.set_printoptions(suppress=True)
 	#verificar que esta balanceado
 	sum=0
 	for node in range(0,mat.shape[0]):
@@ -123,7 +124,7 @@ def pasoSimplex(mat, matprimal,iter=0, maxiter=999):
 					max = temp
 					pivoteini = row
 					pivotedes = col
-	np.set_printoptions(suppress=True)
+	
 	print(iter,'matriz Precio sombra y costo dual: \n',matPrecioSombra, vecCostoDual)
 	if(max <= 0 or iter == maxiter):
 		return matprimal

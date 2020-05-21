@@ -33,6 +33,7 @@ prob2b = np.array([
 
 
 def rutaDijkstra(mat, nodoInicio= 0, nodoDestino=1):
+	np.set_printoptions(suppress=True)
 	if(nodoDestino >= mat.shape[0]):
 		print('error: nododestino fuera de tamaño de matriz')
 		return np.zeros(shape = mat.shape), 0, 0

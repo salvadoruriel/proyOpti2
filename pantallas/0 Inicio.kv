@@ -1,0 +1,43 @@
+ContentScreen:
+    name: '0 Inicio'
+    fullscreen: True
+    orientation: 'vertical'
+
+    BoxLayout:
+        #orientation: 'vertical'
+        size_hint_y: None
+        #height: '48dp'
+
+        Label:
+            text: 'Proyecto Optimizacion 2'
+            font_size: 30
+            #size_hint_x: None
+            #size: self.texture_size
+            #pos_hint: {'center': 1}
+
+    BoxLayout:
+        size_hint_y: None
+        Image: #TODO: encontrar como cambiar tamanio
+            id: unamimg
+            source: 'images/unam.png'
+            #size_hint_y: None
+            size: self.width, self.height
+            #width: 300
+            #height: 200
+            allow_stretch: True
+
+    BoxLayout:
+        size_hint_y: None
+        orientation: 'vertical'
+        Label:
+            text: 'Alumnos:'
+        Label:
+            text: 'Herrera Lara Fabian'
+        Label:
+            text: 'Aguirre Andrade Salvador Uriel'
+        Label:
+            text: 'Mayra M'
+        Label:
+            text: 'Cristina'
+        Label:
+            text: 'Alee'
