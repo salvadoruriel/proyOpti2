@@ -11,7 +11,7 @@ if __name__ == '__main__':
         from ..mostrarGrafica import imprimeGraf
 
 im = -1 #imposibles como caminos asi mismo
-mg = 999 #para caminos no posible como m grande
+mg = 99999 #para caminos no posible como m grande
 Eje1Midwest = np.array([
 	[-1,1,5,7,9,mg],
 	[0,-1,6,4,3,mg],
@@ -20,6 +20,16 @@ Eje1Midwest = np.array([
 	[0,0,0,0,-1,mg],
 	[0,0,0,0,0,-1],
 	])
+EjeTransporte= np.array([
+	[-1,1100,1300,2000,mg,mg,mg],
+	[0,-1,mg,2000,mg,2600,1400],
+	[0,0,-1,1000,mg,mg,780],
+	[0,0,0,-1,800,mg,900],
+	[0,0,0,0,-1,200,mg],
+	[0,0,0,0,0,-1,1300],
+	[0,0,0,0,0,0,-1]
+	])
+EjeTransporte += np.triu(EjeTransporte).transpose()
 #print(Eje1Midwest)
 Eje1Midwest += np.triu(Eje1Midwest).transpose()
 #print(Eje1Midwest)
@@ -50,8 +60,8 @@ def arbolExpMin(mat, nodoInicio= 0):
 	try:
 		vecExcl.remove(node)
 	except:
-		print('arbol ya conectado')
-		return mat
+		print('arbol ya minimo conectado',node, vecIncl, vecExcl)
+		return mat, 0
 	#anexo conexion
 	vecIncl.append(node)
 	mataux[nodoInicio][node] = 1
@@ -96,7 +106,7 @@ def arbolExpMinRecur(mat, mataux, costo, vecIncl, vecExcl):
 #PRUEBAS TEST
 '''
 #imprimeGraf(Eje1Midwest)
-costo, mataux = arbolExpMin(Eje1Midwest,0)
+costo, mataux = arbolExpMin(EjeTransporte,0)
 print(costo)
 imprimeGraf(mataux)
 '''
