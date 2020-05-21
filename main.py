@@ -136,20 +136,6 @@ TextInput:
 					print('no es un numero valido')
 					return
 				matrizProblema = np.zeros( shape= (nodos,nodos) )
-				'''
-				for row in range(0,nodos):
-					for col in range(0,nodos):
-						#matrizProblema[row][col] = ('{}{}'.format(row,col))[row][col]
-						#lrow acomodo de renglon en layout
-						lrow = row +nodos-1 %(nodos)
-						temp = layout.children[ row*nodos + col].text
-						print(row,col ,layout.children[ row*nodos + col].text)
-						#temp = 'self.ids.{}{}.text'.format(row,col)
-						if(temp == 'M' or temp == 'm' or temp=='mg'):
-							matrizProblema[row][col] = mg
-						else:
-							matrizProblema[row][col] = int(temp)
-				'''
 				row=0
 				col=0
 				for tempnod in reversed(layout.children):
