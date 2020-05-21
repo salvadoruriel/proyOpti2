@@ -1,0 +1,44 @@
+--How I installed kivy for windows 10 64bits
+----1
+Ensure you have the latest pip, wheel, and virtualenv:
+python -m pip install --upgrade pip wheel setuptools virtualenv
+
+-------Venv
+First create the environment named kivy_venv in your 
+	current directory:
+python -m virtualenv kivy_venv
+
+Activate the virtual environment. 
+You’ll have to do this step from the current directory 
+	every time you start a new terminal. On windows CMD do:
+kivy_venv\Scripts\activate
+
+----2 Dependencies
+***
+[...]
+Currently on Windows, we provide the following dependency wheels:
+	gstreamer for audio and video
+	glew and/or angle (3.5 only) for OpenGL
+	sdl2 for control and/or OpenGL.
+One can select which of these to use for OpenGL using the 
+	KIVY_GL_BACKEND envrionment variable by setting it to 
+	glew (the default), angle, or sdl2. angle is currently in an 
+	experimental phase as a substitute for glew on Python 3.5+ only.
+
+gstreamer is an optional dependency which only needs to be 
+	installed if video display or audio is desired. 
+	ffpyplayer is an alternate dependency for audio or video.
+***
+python -m pip install docutils pygments pypiwin32 kivy_deps.sdl2==0.1.* kivy_deps.glew==0.1.*
+python -m pip install kivy_deps.gstreamer==0.1.*
+(OPTIONAL angle OpenGL Backend instead of glew )
+python -m pip install kivy_deps.angle==0.1.*
+
+----3 Installing kivy
+python -m pip install kivy==1.11.1
+
+----4 (OPTIONAL) install kivy examples
+python -m pip install kivy_examples==1.11.1
+
+----5 TEST, prueba que se instalo y corre el ejemplo:
+python kivy_venv\share\kivy-examples\demo\showcase\main.py

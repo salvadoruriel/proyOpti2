@@ -1,0 +1,56 @@
+https://kivy.org/doc/stable/installation/installation-windows.html#install-win-dist
+
+Installing the kivy stable release¶
+Warning
+
+Kivy 1.11.1 is the last release that supports Python 2.
+
+Now that python is installed, open the Command line and make sure python is available by typing python --version. Then, do the following to create a new virtual environment (optionally) and install the most recent stable kivy release (1.11.1) and its dependencies.
+
+Ensure you have the latest pip, wheel, and virtualenv:
+
+python -m pip install --upgrade pip wheel setuptools virtualenv
+Optionally create a new virtual environment for your Kivy project. Highly recommended:
+
+First create the environment named kivy_venv in your current directory:
+
+python -m virtualenv kivy_venv
+Activate the virtual environment. You’ll have to do this step from the current directory every time you start a new terminal. On windows CMD do:
+
+kivy_venv\Scripts\activate
+If you’re in a bash terminal, instead do:
+
+source kivy_venv/Scripts/activate
+Your terminal should now preface the path with something like (kivy_venv), indicating that the kivy_venv environment is active. If it doesn’t say that, the virtual environment is not active.
+
+Install the dependencies (skip gstreamer (~120MB) if not needed, see Kivy’s dependencies). If you are upgrading Kivy, see Updating Kivy from a previous release:
+
+python -m pip install docutils pygments pypiwin32 kivy_deps.sdl2==0.1.* kivy_deps.glew==0.1.*
+python -m pip install kivy_deps.gstreamer==0.1.*
+Note
+
+If you encounter a MemoryError while installing, add after pip install the –no-cache-dir option.
+
+For Python 3.5+, you can also use the angle backend instead of glew. This can be installed with:
+
+python -m pip install kivy_deps.angle==0.1.*
+Warning
+
+When installing, pin kivy’s dependencies to the specific version that was released on pypi when your kivy version was released, like above. Otherwise you may get an incompatible dependency when it is updated in the future.
+
+Install kivy:
+
+python -m pip install kivy==1.11.1
+(Optionally) Install the kivy examples:
+
+python -m pip install kivy_examples==1.11.1
+The examples are installed in the share directory under the root directory where python is installed.
+
+That’s it. You should now be able to import kivy in python or run a basic example if you installed the kivy examples:
+
+python kivy_venv\share\kivy-examples\demo\showcase\main.py
+Replace kivy_venv with the path where python is installed if you didn’t use a virtualenv.
+
+Note
+
+If you encounter any permission denied errors, try opening the Command prompt as administrator and trying again. The best solution for this is to use a virtual environment instead.
